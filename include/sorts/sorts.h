@@ -165,3 +165,30 @@ stats coctail_sort(Iterator begin, Iterator end) {
     return s;
 }
 
+template <typename Iterator>
+stats comb_sort(Iterator begin, Iterator end) {
+    stats s;
+    Iterator i, j;
+    int size = end - begin;
+    if (size < 2)
+        return s;
+    int step = size-1;
+    bool swaps = true;
+    while (step >= 1 || swaps == true) {
+        swaps = false;
+        for ( i = begin; i < (end - step); ++i) {
+            ++s.comparison_count;
+            if (*i > *(i + step)) {
+                swap(*i, *(i + step));
+                ++s.copy_count;
+                swaps = true;
+            }
+        }
+        step = step - 1;
+        if (step < 1 && swaps == true) {
+            step = 1;
+        }
+        
+
+    }return s;
+}
