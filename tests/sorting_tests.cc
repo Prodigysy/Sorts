@@ -87,7 +87,63 @@ TEST(sorts, combSortIdenticalNumbers) {
 	EXPECT_TRUE(v_sorted == v);
 }
 
+TEST(vectors, randomVector) {
+	srand(42);
+	vector<int> v = random_vector(20, 40, 100);
+	for (int i = 0; i < v.size(); ++i)
+		cout << v[i]<<" ";
+	cout << endl;
+	EXPECT_TRUE(20 == v.size());
+}
 
+TEST(vectors, normalVector) {
+	vector<int> v = normal_vector(20);
+	for (int i = 0; i < v.size(); ++i)
+		cout << v[i] << " ";
+	cout << endl;
+	EXPECT_TRUE(20 == v.size());
+}
+
+TEST(vectors, reverseVector) {
+	vector<int> v = reverse_vector(20);
+	for (int i = 0; i < v.size(); ++i)
+		cout << v[i] << " ";
+	cout << endl;
+	EXPECT_TRUE(20 == v.size());
+}
+
+TEST(sortsIterator, InsertionSortWithIterators) {
+	vector<int> v = reverse_vector(100);
+	vector<int> v_sorted = normal_vector(100);
+	stats statistic = insertion_sort(v.begin(), v.end());
+	for (int i = 0; i < v.size(); ++i)
+		cout << v[i] << " ";
+	cout << endl;
+	cout << "Comparison_count:" << statistic.comparison_count << " copy_count:" << statistic.copy_count << endl;
+	EXPECT_TRUE(v_sorted == v);
+}
+
+TEST(sortsIterator, CoctailSortWithIterators) {
+	vector<int> v = reverse_vector(100);
+	vector<int> v_sorted = normal_vector(100);
+	stats statistic = coctail_sort(v.begin(), v.end());
+	for (int i = 0; i < v.size(); ++i)
+		cout << v[i] << " ";
+	cout << endl;
+	cout << "Comparison_count:" << statistic.comparison_count << " copy_count:" << statistic.copy_count << endl;
+	EXPECT_TRUE(v_sorted == v);
+}
+
+TEST(sortsIterator, CombSortWithIterators) {
+	vector<int> v = reverse_vector(100);
+	vector<int> v_sorted = normal_vector(100);
+	stats statistic = comb_sort(v.begin(), v.end());
+	for (int i = 0; i < v.size(); ++i)
+		cout << v[i] << " ";
+	cout << endl;
+	cout << "Comparison_count:" << statistic.comparison_count << " copy_count:" << statistic.copy_count << endl;
+	EXPECT_TRUE(v_sorted == v);
+}
 /*
 TEST(vectors, randomSize1000) {
 	srand(42);
