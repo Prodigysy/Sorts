@@ -114,3 +114,54 @@ vector<int> reverse_vector(int size) {
     return arr;
 }
 
+template <typename Iterator> 
+stats insertion_sort(Iterator begin, Iterator end) {
+    Iterator i, j;
+    stats s;
+    for ( i = begin; i != end; ++i) {
+        for (j = i; j !=begin; --j) {
+            ++s.comparison_count;
+            if (*j < *(j - 1)) {
+                swap(*j, *(j - 1));;
+                ++s.copy_count;
+            }
+            else break;
+        }
+    } 
+    return s;
+}
+
+template <typename Iterator>
+stats coctail_sort(Iterator begin, Iterator end) {
+    Iterator i, j;
+    stats s;
+
+    Iterator low = begin;
+    Iterator up = (end-1);
+    Iterator last = end;
+    while (low < up) {
+        last = end;
+        for ( i = begin; i < up; ++i) {
+            ++s.comparison_count;
+            if (*i > *(i + 1)) {
+                std::swap(*i, *(i + 1));
+                last = i;
+                ++s.copy_count;
+            }
+        }
+        up = last;
+        if (last ==end)
+            break;
+        for (i = up-1; i > low; --i) {
+            ++s.comparison_count;
+            if (*i > *(i + 1)) {
+                std::swap(*i, *(i + 1));
+                last = i;
+                ++s.copy_count;
+            }
+        }
+        low = last;
+    }
+    return s;
+}
+
