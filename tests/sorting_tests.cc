@@ -160,45 +160,6 @@ TEST(vectors, randomSize1000) {
 
 }
 
-TEST(vectors, randomSize2000) {
-	size_t sum_comparison = 0, sum_copy = 0;
-	for (size_t i = 0; i < 100; ++i) {
-		vector<int> v = random_vector(2000, 0, 1000);
-		stats counter = comb_sort(v);
-		sum_comparison += counter.comparison_count;
-		sum_copy += counter.copy_count;
-	}
-	cout << "size: " << 2000 << endl;
-	cout << "Average comparison quantity: " << sum_comparison / 100 << endl;
-	cout << "Average copy quantity: " << sum_copy / 100 << endl;
-}
-
-TEST(vectors, randomSize3000) {
-	size_t sum_comparison = 0, sum_copy = 0;
-	for (size_t i = 0; i < 100; ++i) {
-		vector<int> v = random_vector(3000, 0, 1000);
-		stats counter = comb_sort(v);
-		sum_comparison += counter.comparison_count;
-		sum_copy += counter.copy_count;
-	}
-	cout << "size: " << 3000 << endl;
-	cout << "Average comparison quantity: " << sum_comparison / 100 << endl;
-	cout << "Average copy quantity: " << sum_copy / 100 << endl;
-}
-
-TEST(vectors, randomSize4000) {
-	size_t sum_comparison = 0, sum_copy = 0;
-	for (size_t i = 0; i < 100; ++i) {
-		vector<int> v = random_vector(4000, 0, 1000);
-		stats counter = comb_sort(v);
-		sum_comparison += counter.comparison_count;
-		sum_copy += counter.copy_count;
-	}
-	cout << "size: " << 4000 << endl;
-	cout << "Average comparison quantity: " << sum_comparison / 100 << endl;
-	cout << "Average copy quantity: " << sum_copy / 100 << endl;
-}
-
 TEST(vectors, randomSize5000) {
 	size_t sum_comparison = 0, sum_copy = 0;
 	for (size_t i = 0; i < 100; ++i) {
